@@ -1,0 +1,44 @@
+﻿@model IEnumerable<InAndOut.Models.Item>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Borrowed Items List</h2>
+        </div>
+        <div class="col-6 text-right" >
+            <a class="btn btn-primary" asp-controller="Item" asp-action="Create">Create new Item</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Borrower</th>
+                    <th scope="col">Lender</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Itemname</td>
+                        <td>@item.Borrower</td>
+                        <td>@item.Lender</td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+
+</div>
